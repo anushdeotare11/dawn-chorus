@@ -1,0 +1,53 @@
+{
+  "walk_date": "2026-10-08",
+  "time_of_day": "Dawn",
+  "duration_mmss": "0:29",
+  "latitude": 13.0,
+  "longitude": 77.6,
+  "week": 38,
+  "threshold": 0.5,
+  "processing_time_s": 19.43925166130066,
+  "gemma_model_name": "gemma3:4b",
+  "bingo_species": [
+    "Common Myna",
+    "Black Drongo",
+    "White-throated Kingfisher",
+    "House Crow",
+    "Red-vented Bulbul",
+    "Purple-rumped Sunbird",
+    "Asian Koel",
+    "Large-billed Crow",
+    "Common Tailorbird",
+    "Rock Pigeon",
+    "Rose-ringed Parakeet",
+    "Greater Coucal"
+  ],
+  "detections": [
+    {
+      "common_name": "Common Myna",
+      "scientific_name": "Acridotheres tristis",
+      "count": 4,
+      "max_confidence": 0.976,
+      "first_heard_s": 3.0
+    }
+  ],
+  "missed_species": [
+    "Black Drongo",
+    "White-throated Kingfisher",
+    "House Crow",
+    "Red-vented Bulbul",
+    "Purple-rumped Sunbird",
+    "Asian Koel",
+    "Large-billed Crow",
+    "Common Tailorbird",
+    "Rock Pigeon",
+    "Rose-ringed Parakeet",
+    "Greater Coucal"
+  ],
+  "bingo_score": "1/12",
+  "found_count": 1,
+  "bingo_total": 12,
+  "field_card": "2026-10-08 at Dawn, a 29-minute walk revealed 4 Common Mynas, their distinctive chatter filling the early morning air. We heard several Common Mynas, noting their rapid, repetitive calls. The Common Myna detections were highly confident, showcasing their abundance. Listen for these next time: Black Drongo, White-throated Kingfisher, and Rose-ringed Parakeet.",
+  "card_source": "gemma",
+  "card_warning": null
+}
