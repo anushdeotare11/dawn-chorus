@@ -143,6 +143,10 @@ def generate_field_card(
     if not detections:
         return template, None, True
 
+    import time, os
+    if os.environ.get("DAWN_SLOW_GEMMA") == "1":
+        time.sleep(8)
+
     try:
         import ollama
 

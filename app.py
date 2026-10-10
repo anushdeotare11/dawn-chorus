@@ -426,44 +426,6 @@ if file_bytes:
     
     col1, col2 = st.columns([1, 3])
     
-    # Generate / Regenerate
-    should_generate = False
-    if st.session_state.card_text is None:
-        should_generate = True
-    
-    if st.session_state.card_warning:
-        with st.container():
-            st.warning(st.session_state.card_warning)
-            if "Gemma isn't running" in st.session_state.card_warning or "model not found" in st.session_state.card_warning:
-                if st.button("Retry Gemma"):
-                    should_generate = True
-    elif st.session_state.card_text is not None:
-        if col1.button("Regenerate Card"):
-            should_generate = True
-            
-    if should_generate:
-        loader_placeholder = st.empty()
-        loader_placeholder.html(ui.listening_loader("Writing your field card..."))
-        
-        card_text, card_warn, card_badge = generate_field_card(
-            detections=agged_detections,
-            missed_species=missed_names,
-            walk_date=str(walk_date),
-            time_of_day=time_of_day,
-            duration_mmss=duration_mmss,
-        )
-        st.session_state.card_text = card_text
-        st.session_state.card_warning = card_warn
-        st.session_state.card_badge = card_badge
-        
-        st.session_state.played_animations.discard(f"card_{res_hash}")
-        
-        loader_placeholder.empty()
-        st.rerun()
-
-    played_card = has_played(f"card_{res_hash}")
-    st.markdown(ui.field_card(st.session_state.card_text, st.session_state.card_badge, not played_card), unsafe_allow_html=True)
-
     # Grass Ratio
     screen_time_s = time.time() - st.session_state.screen_time_start
     played_grass = has_played(f"grass_{res_hash}")
@@ -511,6 +473,46 @@ if file_bytes:
                 st.success(f"Walk saved to `{walk_file}`")
         else:
             st.caption("Sample data (not saved to walk logs).")
+
+    @st.fragment
+    def field_journal_section():
+        # Generate / Regenerate
+        should_generate = False
+        if st.session_state.card_text is None:
+            should_generate = True
+        
+        if st.session_state.card_warning:
+            with st.container():
+                st.warning(st.session_state.card_warning)
+                if "Gemma isn't running" in st.session_state.card_warning or "model not found" in st.session_state.card_warning:
+                    if st.button("Retry Gemma"):
+                        should_generate = True
+        elif st.session_state.card_text is not None:
+            if col1.button("Regenerate Card"):
+                should_generate = True
+                
+        card_placeholder = st.empty()
+        
+        if should_generate:
+            card_placeholder.html(ui.listening_loader("Writing your field card..."))
+            
+            card_text, card_warn, card_badge = generate_field_card(
+                detections=agged_detections,
+                missed_species=missed_names,
+                walk_date=str(walk_date),
+                time_of_day=time_of_day,
+                duration_mmss=duration_mmss,
+            )
+            st.session_state.card_text = card_text
+            st.session_state.card_warning = card_warn
+            st.session_state.card_badge = card_badge
+            
+            st.session_state.played_animations.discard(f"card_{res_hash}")
+            
+        played_card = has_played(f"card_{res_hash}")
+        card_placeholder.markdown(ui.field_card(st.session_state.card_text, st.session_state.card_badge, not played_card), unsafe_allow_html=True)
+
+    field_journal_section()
 else:
     # Default Hero with no custom waveform
     hero_placeholder.markdown(hero.build_hero(time_of_day, not hero_played, None), unsafe_allow_html=True)

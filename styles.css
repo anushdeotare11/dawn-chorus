@@ -276,3 +276,5 @@ p { color: rgba(246, 241, 228, 0.9); line-height: 1.5; }
   .bingo-tile.found { background: #f0f0f0 !important; color: black !important; border: 3px solid black !important; }
   * { animation: none !important; transition: none !important; }
 }
+[ d a t a - t e s t i d = " s t E l e m e n t C o n t a i n e r " ] [ d a t a - s t a l e = " t r u e " ]   {   o p a c i t y :   1   ! i m p o r t a n t ;   t r a n s i t i o n :   n o n e   ! i m p o r t a n t ;   f i l t e r :   n o n e   ! i m p o r t a n t ;   }  
+ 
