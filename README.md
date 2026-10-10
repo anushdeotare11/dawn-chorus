@@ -2,6 +2,8 @@
 
 > An offline-first, screen-free bird-listening walk bingo app powered by open-source AI.
 
+*Tested on Python 3.9 on Windows 10/11. Newer Python versions may fail to install TensorFlow-based dependencies.*
+
 **60-Second Summary**: Dawn Chorus turns your daily walk into a tranquil audio bingo game. Put your phone in your pocket, start recording with your native voice recorder app, and enjoy a 20–30 minute walk completely screen-free. Afterwards, upload your recording. Dawn Chorus runs BirdNET locally to identify bird species, then prompts a local Gemma model via Ollama to craft a warm, accurate field card summarizing your walk.
 
 ## 🚀 Quick Start
@@ -45,6 +47,7 @@ Most modern AI apps demand continuous screen attention, high-bandwidth streaming
 ## 🧪 Before every walk
 
 To properly use Dawn Chorus in the wild, follow this checklist before you step outside:
+- [ ] **Open the app and set location:** Enter your latitude/longitude in the sidebar. The default is set to a city-level coordinate in `config.py`, but you should enter your local coordinates.
 - [ ] **Charge your phone** fully.
 - [ ] Set your phone voice recorder app to save as **`.m4a`** or **`.wav`**.
 - [ ] **Start Ollama** on your laptop.

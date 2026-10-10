@@ -26,6 +26,7 @@ def test_hero_xml_validity():
             assert "hero-cloud1" in html_out
             assert "hero-layer" in html_out
 
+@pytest.mark.slow
 def test_app_smoke():
     at = AppTest.from_file("app.py").run(timeout=60)
     assert not at.exception, f"App crashed on load: {at.exception[0]}"

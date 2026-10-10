@@ -129,6 +129,7 @@ class TestGetSpeciesFilter:
     not list(SAMPLES_DIR.glob("*.*")) if SAMPLES_DIR.exists() else True,
     reason="No sample audio files in samples/ directory",
 )
+@pytest.mark.slow
 class TestRunDetection:
     """Integration test that runs detection on real clips in samples/."""
 

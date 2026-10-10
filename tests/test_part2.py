@@ -1,12 +1,7 @@
-import pytest
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from app import cached_run_detection
 from ui import processing_panel
-from detect import RawDetection
-import time
-
 def test_processing_panel_html_format():
     # Test all states and assert single-line format
     for state in ["preparing", "listening", "writing", "error"]:

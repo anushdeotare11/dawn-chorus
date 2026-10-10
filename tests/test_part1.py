@@ -29,6 +29,7 @@ def test_no_streamlit_in_cached_functions():
                                 if isinstance(sub_node.value, ast.Name) and sub_node.value.id == "st":
                                     pytest.fail(f"Found st.{sub_node.attr} call inside cached function '{node.name}' in {py_file.name}")
 
+@pytest.mark.slow
 def test_cache_hit_apptest():
     from streamlit.testing.v1 import AppTest
     at = AppTest.from_file("app.py").run(timeout=60)
