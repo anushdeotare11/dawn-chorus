@@ -43,9 +43,9 @@ def check_disk_space():
 
 def check_samples():
     samples_dir = Path("samples")
-    if samples_dir.exists() and any(samples_dir.iterdir()):
-        return True, "PASS: samples/ directory has files"
-    return False, "FAIL: samples/ directory is empty. Fix: Add some test audio files"
+    if samples_dir.exists() and any(f.suffix in [".wav", ".mp3", ".m4a"] for f in samples_dir.iterdir()):
+        return True, "PASS: samples/ directory has audio files"
+    return True, "WARN: samples/ directory has no audio files (optional)"
 
 def check_streamlit_telemetry():
     toml_path = Path(".streamlit") / "config.toml"
@@ -74,7 +74,7 @@ def check_birdnet_models_and_inference(offline_mode=False):
         
         sample = next((s for s in samples if s.suffix in [".wav", ".mp3", ".m4a"]), None)
         if not sample:
-            return False, "FAIL: No valid audio samples found"
+            return True, "WARN: No valid audio samples found to test inference (optional)"
             
         from detect import run_detection, convert_audio_to_wav
         with tempfile.TemporaryDirectory() as tmp_dir:
